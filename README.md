@@ -10,13 +10,6 @@ This repository is built upon the LLaMA-Factory framework and is used for instru
 
 # 1. Installation
 
-Clone the repository:
-
-```bash
-git clone <your_repository_url>
-cd <your_repository_name>
-```
-
 Install the required dependencies:
 
 ```bash
