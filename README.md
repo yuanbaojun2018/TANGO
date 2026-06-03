@@ -82,26 +82,36 @@ The dataset name (e.g., `WebNLG_test_new`) will be used in the `--dataset` argum
 # 4. Run Prediction on WebNLG
 
 ```bash
-python src/train_bash.py \
-    --stage sft \
-    --do_predict \
-    --model_name_or_path /home/nlp/LLaMA-Factory/model/llama-2-7b-hf \
-    --adapter_name_or_path train_2024-06-04_WebNLG_new \
-    --dataset WebNLG_test_new \
-    --dataset_dir data \
-    --template default \
-    --finetuning_type lora \
-    --output_dir /home/nlp/LLaMA-Factory/predict_result_WebNLG_new_20240606 \
-    --cutoff_len 1536 \
-    --preprocessing_num_workers 16 \
-    --per_device_eval_batch_size 3 \
-    --predict_with_generate
+python src/train_bash.py 
+--stage sft 
+--do_train True 
+--model_name_or_path /home/nlp/LLaMA-Factory/model/llama-2-7b-hf 
+--finetuning_type lora 
+--template default 
+--dataset_dir data 
+--dataset NYT_train
+--cutoff_len 1024
+--learning_rate 3e-4 
+--num_train_epochs 20.0 
+--per_device_train_batch_size 4 
+--gradient_accumulation_steps 64 
+--lr_scheduler_type cosine 
+--logging_steps 10
+--warmup_steps 100  
+--optim adamw_torch  
+--output_dir train_2024-05-18_NYT
+--lora_target q_proj,k_proj,v_proj,o_proj 
+--lora_dropout 0.10
+--lora_rank 16
+--lora_alpha 32 
+--plot_loss  
+--fp16 
 ```
 
 Prediction results will be saved to:
 
 ```text
-/home/nlp/LLaMA-Factory/predict_result_WebNLG_new_20240606
+/home/nlp/LLaMA-Factory/train_NYT
 ```
 
 ---
@@ -113,22 +123,22 @@ python src/train_bash.py \
     --stage sft \
     --do_predict \
     --model_name_or_path /home/nlp/LLaMA-Factory/model/llama-2-7b-hf \
-    --adapter_name_or_path train_2024-06-04_WebNLG_star_new \
-    --dataset WebNLG_star_test_new \
+    --adapter_name_or_path train_NYT \
+    --dataset NYT_test \
     --dataset_dir data \
     --template default \
     --finetuning_type lora \
-    --output_dir /home/nlp/LLaMA-Factory/predict_result_WebNLG_star_new_20240606 \
+    --output_dir /home/nlp/LLaMA-Factory/predict_result \
     --cutoff_len 1536 \
     --preprocessing_num_workers 16 \
-    --per_device_eval_batch_size 3 \
+    --per_device_eval_batch_size 4 \
     --predict_with_generate
 ```
 
 Prediction results will be saved to:
 
 ```text
-/home/nlp/LLaMA-Factory/predict_result_WebNLG_star_new_20240606
+/home/nlp/LLaMA-Factory/predict_result
 ```
 
 ---
