@@ -34,8 +34,7 @@ Example:
 data/
 ├── dataset_info.json
 ├── new_dataset_name.json
-├── WebNLG_test_new.json
-└── WebNLG_star_test_new.json
+
 ```
 
 ---
@@ -52,7 +51,7 @@ Add a new dataset entry:
 
 ```json
 {
-  "new_dataset": {
+  "new_dataset_name": {
     "file_name": "new_dataset_name.json",
     "file_sha1": ""
   }
@@ -63,13 +62,13 @@ Example:
 
 ```json
 {
-  "WebNLG_test_new": {
-    "file_name": "WebNLG_test_new.json",
+  "NYT_train": {
+    "file_name": "NYT_train.json",
     "file_sha1": ""
   },
 
-  "WebNLG_star_test_new": {
-    "file_name": "WebNLG_star_test_new.json",
+  "NYT_test": {
+    "file_name": "NYT_test.json",
     "file_sha1": ""
   }
 }
@@ -79,7 +78,7 @@ The dataset name (e.g., `WebNLG_test_new`) will be used in the `--dataset` argum
 
 ---
 
-# 4. Run Prediction on WebNLG
+# 4. Training on NYT
 
 ```bash
 python src/train_bash.py 
@@ -99,7 +98,7 @@ python src/train_bash.py
 --logging_steps 10
 --warmup_steps 100  
 --optim adamw_torch  
---output_dir train_2024-05-18_NYT
+--output_dir train_NYT
 --lora_target q_proj,k_proj,v_proj,o_proj 
 --lora_dropout 0.10
 --lora_rank 16
@@ -116,7 +115,7 @@ Prediction results will be saved to:
 
 ---
 
-# 5. Run Prediction on WebNLG-Star
+# 5. Run Prediction on NYT
 
 ```bash
 python src/train_bash.py \
