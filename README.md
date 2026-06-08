@@ -160,15 +160,4 @@ Prediction results will be saved to:
 
 ---
 
-# Citation
 
-If you find this repository useful, please consider citing our work:
-
-```bibtex
-@article{tango2026,
-  title={Subtasks Matter! TANGO: Task-subtask Disentanglement and Coupling for Generative Relation Triplet Extraction},
-  author={Anonymous},
-  journal={},
-  year={2026}
-}
-```
