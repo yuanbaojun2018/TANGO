@@ -75,7 +75,7 @@ python src/train_bash.py
 --finetuning_type lora 
 --template default 
 --dataset_dir data 
---dataset NYT
+--dataset NYT_train
 --cutoff_len 1024
 --learning_rate 3e-4 
 --num_train_epochs 20.0 
