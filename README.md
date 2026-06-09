@@ -95,7 +95,7 @@ python src/train_bash.py
 
 ```
 
-Prediction results will be saved to:
+Training checkpoints will be saved to:
 
 ```text
 /home/nlp/LLaMA-Factory/train_NYT
